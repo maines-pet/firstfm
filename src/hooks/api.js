@@ -4,7 +4,7 @@ const { default: axios } = require("axios")
 const { useState, useEffect } = require("react")
 
 
-const BASE_URL = 'http://ws.audioscrobbler.com/2.0/'
+const BASE_URL = 'https://ws.audioscrobbler.com/2.0/'
 
 
 export function useChartTopArtists() {

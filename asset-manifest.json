@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/firstfm/static/css/main.63d8ecb4.css",
+    "main.js": "/firstfm/static/js/main.06bacacf.js",
+    "index.html": "/firstfm/index.html",
+    "main.63d8ecb4.css.map": "/firstfm/static/css/main.63d8ecb4.css.map",
+    "main.06bacacf.js.map": "/firstfm/static/js/main.06bacacf.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.63d8ecb4.css",
+    "static/js/main.06bacacf.js"
+  ]
+}

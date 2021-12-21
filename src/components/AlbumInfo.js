@@ -15,15 +15,9 @@ function AlbumInfo(props) {
         <div className='mt-3'>
           <Link to={'/artist/' + encodeURIComponent(albumInfo.artist)} className='text-xl opacity-70 hover:opacity-100 hover:underline'>{albumInfo.artist}</Link>
           <h2 className='text-3xl'>{albumInfo.name}</h2>
-          {/* {
-            +(albumInfo.duration) > 0 ?
-            <p>{convertMiliSecToMinSec(albumInfo.duration)}</p>
-            :
-            <p>-m--s</p>
-          } */}
+
           <p>{(+albumInfo.listeners).toLocaleString('en-US') + ' listeners'}</p>
           <p>{(+albumInfo.playcount).toLocaleString('en-US') + ' play count'}</p>
-          {/* <p className='mt-4'>{albumInfo?.wiki?.summary}</p> */}
           {
             albumInfo?.tracks.track ?
               <div className='mt-4'>

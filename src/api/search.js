@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { useOutletContext, useParams } from "react-router";
 import { useEffect } from "react/cjs/react.development";
 
 const BASE_URL = 'https://ws.audioscrobbler.com/2.0/'
@@ -12,7 +13,7 @@ function getSearchResult(query, method) {
     limit: 6
   }
 
-  params = {...params, ...query}
+  params = { ...params, ...query }
   return axios.get(BASE_URL, {
     params: {
       ...params
@@ -20,22 +21,23 @@ function getSearchResult(query, method) {
   })
 }
 
-export function useSearch(query) {
-  const [ artists, setArtists ] = useState({})
+export function useSearch() {
+  const [artists, setArtists] = useState({})
   const [isArtistLoaded, setIsArtistLoaded] = useState(false)
-  const [ tracks, setTracks ] = useState({})
+  const [tracks, setTracks] = useState({})
   const [isTrackLoaded, setIsTrackLoaded] = useState(false)
-  const [ albums, setAlbums ] = useState({})
+  const [albums, setAlbums] = useState({})
   const [isAlbumLoaded, setIsAlbumLoaded] = useState(false)
   const [error, setError] = useState(null)
 
+  const { searchString } = useParams()
+  const [outletQuery, setOutletQuery] = useOutletContext()
+  const query = searchString || outletQuery
   useEffect(() => {
-    if (query.trim() === '') return
     setIsArtistLoaded(false)
     setIsTrackLoaded(false)
     setIsAlbumLoaded(false)
-    const timeOut = setTimeout(() => {
-      getSearchResult({artist: query}, 'artist.search')
+    getSearchResult({ artist: query }, 'artist.search')
       .then(res => {
         setIsArtistLoaded(true)
         setArtists(res.data.results)
@@ -44,8 +46,8 @@ export function useSearch(query) {
         console.log(err)
         setError(err)
       })
-      
-      getSearchResult({track: query}, 'track.search')
+
+    getSearchResult({ track: query }, 'track.search')
       .then(res => {
         setIsTrackLoaded(true)
         setTracks(res.data.results)
@@ -55,7 +57,7 @@ export function useSearch(query) {
         setError(err)
       })
 
-      getSearchResult({album: query}, 'album.search')
+    getSearchResult({ album: query }, 'album.search')
       .then(res => {
         setIsAlbumLoaded(true)
         setAlbums(res.data.results)
@@ -64,12 +66,8 @@ export function useSearch(query) {
         console.log(err)
         setError(err)
       })
-    }, 750)
-    
-
-    return (() => clearTimeout(timeOut))
 
   }, [query])
 
-  return {artists, tracks, albums, isArtistLoaded, isTrackLoaded, isAlbumLoaded, error}
+  return { artists, tracks, albums, isArtistLoaded, isTrackLoaded, isAlbumLoaded, error }
 }

@@ -1,31 +1,18 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { useSearch, useSearchForTrack } from '../api/search';
 
 function SearchResults(props) {
 
-    const [searchText, setSearchText] = useState('')
+    const { query } = useParams()
+    const [searchText, setSearchText] = useState(query || '')
 
     const { artists, tracks, albums, isArtistLoaded, isTrackLoaded, isAlbumLoaded, error } = useSearch(searchText)
 
     const navigate = useNavigate()
-    function handleChange(event) {
-        setSearchText(event.target.value)
-    }
-
-    function handleSubmit(event) {
-        event.preventDefault()
-        setSearchText(searchText)
-    }
 
     return (
-        <div className='mt-3 ml-3'>
-            <form onSubmit={handleSubmit}>
-                <input type="text" value={searchText} onChange={handleChange} className='bg-slate-700 border rounded-md w-1/4 pl-2 text-white font-sans' placeholder='Search' />
-            </form>
-
-            <div>Searching for <span className='text-white font-semibold'>{searchText}</span></div>
-
+        <>
             {
                 (isArtistLoaded || isTrackLoaded || isAlbumLoaded)
                     ?
@@ -72,7 +59,9 @@ function SearchResults(props) {
                                     return (
                                         <div onClick={() => navigate(`/artist/${albumElem.artist}/album/${albumElem.name}`)} key={albumElem.url} className='box-border p-2 w-48 h-64 bg-black text-white border-0 rounded-md cursor-pointer'>
                                             <div className='w-44 h-44 border-0 rounded-full overflow-hidden'>
-                                                <img src="https://i.scdn.co/image/8128a8fc52288607eb2e4667a4c172432b3e03e1" className='h-full object-cover object-center' alt="" />
+                                                <img src={albumElem.image.find((albumImage => albumImage.size === 'large')
+                                                )['#text']} 
+                                                className='h-full object-cover object-center' alt="" />
                                             </div>
                                             <div className='text-center mt-5'>
                                                 <div title={albumElem.name} className='font-bold truncate'>{albumElem.name}</div>
@@ -88,7 +77,7 @@ function SearchResults(props) {
                     false
             }
 
-        </div >
+        </ >
     );
 }
 

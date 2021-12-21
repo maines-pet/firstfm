@@ -3,15 +3,13 @@ import { HashRouter as Router, Link, Route, Routes } from 'react-router-dom'
 import AlbumInfo from './AlbumInfo';
 import ArtistInfo from './ArtistInfo';
 import { Home } from './Home'
+import SearchForm from './SearchForm';
 import SearchResults from './SearchResults';
 import { TopArtists } from './TopArtists'
 import { TopTracks } from './TopTracks';
 import TrackInfo from './TrackInfo';
 
 function FirstFM(props) {
-
-
-
   return (
     <Router>
       <div className='text-gray-300 font-mono'>
@@ -29,8 +27,10 @@ function FirstFM(props) {
           <div className='col-span-4 pb-2'>
 
             <Routes>
-              <Route path='/' element={<Home />}/>
-              <Route path='/search' element={<SearchResults />} />
+              <Route path='/' element={<Home />} />
+              <Route path='/search' element={<SearchForm />} >
+                <Route path=':searchString' element={<SearchResults />} />
+              </Route>
               <Route path='/top-artists' element={<TopArtists />} />
               <Route path='/top-charts' element={<TopTracks />} />
               <Route path='/artist/:name' element={<ArtistInfo />} />

@@ -191,3 +191,36 @@ export function useTrackInfo() {
 }
 
 
+export function useAlbumInfo() {
+  const [albumInfo, setAlbumInfo] = useState({})
+  const [isLoaded, setIsLoaded] = useState(false)
+  const [error, setError] = useState(null)
+
+  const {name, album} = useParams()
+  const cancelSource = axios.CancelToken.source()
+  useEffect(() => {
+    setIsLoaded(false)
+    axios.get(BASE_URL, {
+      params: {
+        method: 'album.getInfo',
+        artist: name,
+        album,
+        api_key: process.env.REACT_APP_LAST_FM,
+        format: 'json'
+      }
+    }).then(res => {
+      setAlbumInfo(res.data.album)
+      setIsLoaded(true)
+      console.log(res.data.album)
+    }).catch(err => {
+      console.log(err)
+      setError(err)
+    })
+    return cancelSource.cancel('Inflight axios request cancelled')
+  }, [name])
+
+
+  return { albumInfo, isLoaded, error }
+}
+
+

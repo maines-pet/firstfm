@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { convertMiliSecToMinSec } from '../helper/helper';
 import { useTrackInfo } from '../hooks/api';
 
 function TrackInfo(props) {
@@ -41,10 +42,5 @@ function TrackInfo(props) {
   );
 }
 
-function convertMiliSecToMinSec(duration) {
-  const min = Math.floor(duration / (1000 * 60))
-  const sec = (duration / 1000) % 60
-  return min + 'm' + sec.toString().padStart(2, '0') + 's'
-}
 
 export default TrackInfo;

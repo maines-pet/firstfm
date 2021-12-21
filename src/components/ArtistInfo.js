@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useLocation } from 'react-router-dom';
 import { useEffect } from 'react/cjs/react.development';
 import { useArtistSearch, useArtistTopAlbums, useArtistTopTracks } from '../hooks/api';
 
@@ -13,11 +13,17 @@ function ArtistInfo(props) {
   const [imgUrl, setImgUrl] = useState('')
   const { name } = useParams()
 
+  const location = useLocation()
+
   useEffect(() => {
-    setImgUrl('')
-    axios.get('https://randomuser.me/api/?inc=picture')
-      .then(res => setImgUrl(res.data.results[0].picture.large))
-      .catch(err => console.log(err))
+    if (location?.state?.imageUrl) {
+      setImgUrl(location.state.imageUrl)
+    } else {
+      setImgUrl('')
+      axios.get('https://randomuser.me/api/?inc=picture')
+        .then(res => setImgUrl(res.data.results[0].picture.large))
+        .catch(err => console.log(err))
+    }
   }, [name])
 
   const handleClick = () => {
@@ -68,7 +74,7 @@ function ArtistInfo(props) {
 
           <div>
             <p className='text-md'>{`If you like ${artist.name}, you might also like:`}</p>
-            <div className='mt-5 grid grid-flow-col-dense gap-1'>
+            <div className='mt-5 grid grid-flow-col-dense justify-start'>
               {artist.similar.artist.map(({ name }) => <SimilarArtist name={name} />)}
             </div>
           </div>
@@ -89,7 +95,7 @@ function Tag({ label }) {
 function SimilarArtist({ name }) {
   return (
     <div>
-      <Link to={'/artist/' + name} className='border rounded-2xl p-2 mr-2 mb-2 box-content'>
+      <Link to={'/artist/' + name} className='transition duration-500 border hover:text-slate-700 hover:bg-gray-100 rounded-2xl p-2 mr-2 mb-2 box-content'>
         {name}
       </Link>
     </div>

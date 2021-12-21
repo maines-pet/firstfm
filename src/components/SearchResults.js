@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
-import { useSearch, useSearchForTrack } from '../api/search';
+import { useRandomImage, useSearch, useSearchForTrack } from '../api/search';
 
 function SearchResults(props) {
 
@@ -9,6 +9,7 @@ function SearchResults(props) {
 
     const { artists, tracks, albums, isArtistLoaded, isTrackLoaded, isAlbumLoaded, error } = useSearch(searchText)
 
+    const imageUrls = useRandomImage()
     const navigate = useNavigate()
 
     return (
@@ -19,12 +20,12 @@ function SearchResults(props) {
                     <>
                         <Cards heading='Artists'>
                             {isArtistLoaded &&
-                                artists.artistmatches?.artist.map(artistElem => { //requires safe navigation from trackmatches to track (???) not sure why
+                                artists.artistmatches?.artist.map((artistElem, index) => { //requires safe navigation from trackmatches to track (???) not sure why
 
                                     return (
-                                        <div onClick={() => navigate(`/artist/${artistElem.name}`)} key={artistElem.url} className='box-border p-2 w-48 h-64 bg-black text-white border-0 rounded-md cursor-pointer'>
+                                        <div onClick={() => navigate(`/artist/${artistElem.name}`, {state : {imageUrl: imageUrls[index]}})} key={artistElem.url} className='box-border p-2 w-48 h-64 bg-black text-white border-0 rounded-md cursor-pointer'>
                                             <div className='w-44 h-44 border-0 rounded-full overflow-hidden'>
-                                                <img src="https://i.scdn.co/image/8128a8fc52288607eb2e4667a4c172432b3e03e1" className='h-full object-cover object-center' alt="" />
+                                                <img src={imageUrls[index]} className='h-full object-cover object-center' alt="" />
                                             </div>
                                             <div className='text-center mt-5'>
                                                 <div title={artistElem.name} className='font-bold truncate'>{artistElem.name}</div>
@@ -39,9 +40,9 @@ function SearchResults(props) {
                                 tracks.trackmatches?.track.map(trackElem => { //requires safe navigation from trackmatches to track (???) not sure why
 
                                     return (
-                                        <div onClick={() => navigate(`/artist/${trackElem.artist}/track/${trackElem.name}`)} key={trackElem.url} className='box-border p-2 w-48 h-64 bg-black text-white border-0 rounded-md cursor-pointer'>
+                                        <div onClick={() => navigate(`/artist/${trackElem.artist}/track/${trackElem.name}`, {state: {image: `https://picsum.photos/seed/${trackElem.name}/300`}})} key={trackElem.url} className='box-border p-2 w-48 h-64 bg-black text-white border-0 rounded-md cursor-pointer'>
                                             <div className='w-44 h-44 border-0 rounded-full overflow-hidden'>
-                                                <img src="https://i.scdn.co/image/8128a8fc52288607eb2e4667a4c172432b3e03e1" className='h-full object-cover object-center' alt="" />
+                                                <img src={`https://picsum.photos/seed/${trackElem.name}/300`} className='h-full object-cover object-center' alt="" />
                                             </div>
                                             <div className='text-center mt-5'>
                                                 <div title={trackElem.name} className='font-bold truncate'>{trackElem.name}</div>
@@ -57,10 +58,9 @@ function SearchResults(props) {
                                 albums.albummatches?.album.map(albumElem => { //requires safe navigation from trackmatches to track (???) not sure why
 
                                     return (
-                                        <div onClick={() => navigate(`/artist/${albumElem.artist}/album/${albumElem.name}`)} key={albumElem.url} className='box-border p-2 w-48 h-64 bg-black text-white border-0 rounded-md cursor-pointer'>
+                                        <div onClick={() => navigate(`/artist/${albumElem.artist}/album/${albumElem.name}`, {state: {image: `https://picsum.photos/seed/${albumElem.name}/300`}})} key={albumElem.url} className='box-border p-2 w-48 h-64 bg-black text-white border-0 rounded-md cursor-pointer'>
                                             <div className='w-44 h-44 border-0 rounded-full overflow-hidden'>
-                                                <img src={albumElem.image.find((albumImage => albumImage.size === 'large')
-                                                )['#text']} 
+                                                <img src={`https://picsum.photos/seed/${albumElem.name}/300`} 
                                                 className='h-full object-cover object-center' alt="" />
                                             </div>
                                             <div className='text-center mt-5'>

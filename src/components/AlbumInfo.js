@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { convertMiliSecToMinSec } from '../helper/helper';
 import { useAlbumInfo } from '../hooks/api';
 import { FaRegClock } from 'react-icons/fa'
@@ -7,12 +7,17 @@ import { FaRegClock } from 'react-icons/fa'
 function AlbumInfo(props) {
 
   const { albumInfo, isLoaded, error } = useAlbumInfo()
+
+  const location = useLocation()
+
+  const imgSrc = location.state?.image || `https://picsum.photos/seed/${albumInfo.name}/200`
   return (
 
     <div className='mt-4 ml-4'>
       {
         isLoaded &&
         <div className='mt-3'>
+          <img src={imgSrc} alt="" />
           <Link to={'/artist/' + encodeURIComponent(albumInfo.artist)} className='text-xl opacity-70 hover:opacity-100 hover:underline'>{albumInfo.artist}</Link>
           <h2 className='text-3xl'>{albumInfo.name}</h2>
 

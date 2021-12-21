@@ -71,3 +71,18 @@ export function useSearch() {
 
   return { artists, tracks, albums, isArtistLoaded, isTrackLoaded, isAlbumLoaded, error }
 }
+
+
+export function useRandomImage() {
+
+  const [imageUrls, setImageUrls] = useState('')
+
+  useEffect(() => {
+    
+    axios.get('https://randomuser.me/api/?inc=picture&results=10')
+      .then(res => setImageUrls(res.data.results.map(randomImage => randomImage.picture.large)))
+      .catch(err => console.log(err))
+  }, [])
+
+  return imageUrls
+}

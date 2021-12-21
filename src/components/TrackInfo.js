@@ -1,24 +1,28 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { convertMiliSecToMinSec } from '../helper/helper';
 import { useTrackInfo } from '../hooks/api';
 
 function TrackInfo(props) {
 
   const { trackInfo, isLoaded, error } = useTrackInfo()
+
+  const location = useLocation()
+  let imgSrc = location.state?.image || `https://picsum.photos/seed/${trackInfo.name}/200`
   return (
 
     <div className='mt-4 ml-4'>
       {
         isLoaded &&
         <div className='mt-3'>
+          <img src={imgSrc} alt="" />
           <Link to={'/artist/' + encodeURIComponent(trackInfo.artist.name)} className='text-xl opacity-70 hover:opacity-100 hover:underline'>{trackInfo.artist.name}</Link>
           <h2 className='text-3xl'>{trackInfo.name}</h2>
           {
             +(trackInfo.duration) > 0 ?
             <p>{convertMiliSecToMinSec(trackInfo.duration)}</p>
             :
-            <p>-m--s</p>
+            <p>00:00</p>
           }
           <p>{(+trackInfo.listeners).toLocaleString('en-US') + ' listeners'}</p>
           <p>{(+trackInfo.playcount).toLocaleString('en-US') + ' play count'}</p>

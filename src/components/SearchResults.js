@@ -24,7 +24,7 @@ function SearchResults(props) {
                 <input type="text" value={searchText} onChange={handleChange} className='bg-slate-700 border rounded-md w-1/4 pl-2 text-white font-sans' placeholder='Search' />
             </form>
 
-            <div>Searching for {searchText}</div>
+            <div>Searching for <span className='text-white font-semibold'>{searchText}</span></div>
 
             {
                 (isArtistLoaded || isTrackLoaded || isAlbumLoaded)

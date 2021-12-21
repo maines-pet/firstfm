@@ -102,11 +102,14 @@ function TopAlbums({ albums }) {
       <h1 className='text-lg'>Top Albums</h1>
       <ul>
         {
-          albums.album.map(({ name, playcount, url }) => {
+          albums.album.map(({ name, playcount, url, image }) => {
             return (
               <Link to={`/artist/${encodeURIComponent(albums['@attr'].artist)}/album/${encodeURIComponent(name)}`} key={url}>
-                <div>{name}</div>
-                <div className='text-xs'>{playcount.toLocaleString('en-US')}</div>
+                <div>
+                  <img src={image.find((img) => img.size === 'medium')["#text"]} alt={name} />
+                  <div>{name}</div>
+                  <div className='text-xs'>{playcount.toLocaleString('en-US')}</div>
+                </div>
               </Link>
             )
           })

@@ -11,20 +11,6 @@ function SearchForm(props) {
     setQuery(event.target.value)
   }
 
-  // useEffect(() => {
-  //   if (pathname.match(/\/search\/\w+/g)) {
-  //     setQuery(pathname.substr("/search/".length))
-  //     return
-  //   }
-
-  //   if (query === '') return
-  //   const timeout = setTimeout(() => {
-  //     navigate(`/search/${query}`)
-  //   }, 750)
-    
-  //   return (() => clearTimeout(timeout))
-  // }, [query, pathname])
-
   function handleSubmit(event) {
     event.preventDefault()
     navigate(`/search/${query}`)

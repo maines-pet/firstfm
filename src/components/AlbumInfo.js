@@ -24,7 +24,7 @@ function AlbumInfo(props) {
           <p>{(+albumInfo.listeners).toLocaleString('en-US') + ' listeners'}</p>
           <p>{(+albumInfo.playcount).toLocaleString('en-US') + ' play count'}</p>
           {
-            albumInfo?.tracks.track ?
+            albumInfo?.tracks ?
               <div className='mt-4'>
                 <h1 className='mb-3 font-semibold'>Tracklisting</h1>
                 <TracksTable />

@@ -36,7 +36,7 @@ function SearchForm(props) {
         <input type="text" value={query} onChange={handleChange} className='bg-slate-700 border rounded-md w-1/4 pl-2 text-white font-sans' placeholder='Search' />
       </form>
 
-      <div>Searching for <span className='text-white font-semibold'>{query}</span></div>
+      {query &&  <div>Searching for <span className='text-white font-semibold'>{query}</span></div>}
       <Outlet context={[query, setQuery]}/>
     </div>
   );

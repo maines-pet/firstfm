@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/firstfm/static/css/main.76ed6fe9.css",
-    "main.js": "/firstfm/static/js/main.87267842.js",
+    "main.css": "/firstfm/static/css/main.7d9b4902.css",
+    "main.js": "/firstfm/static/js/main.3d8b61e0.js",
     "index.html": "/firstfm/index.html",
-    "main.76ed6fe9.css.map": "/firstfm/static/css/main.76ed6fe9.css.map",
-    "main.87267842.js.map": "/firstfm/static/js/main.87267842.js.map"
+    "main.7d9b4902.css.map": "/firstfm/static/css/main.7d9b4902.css.map",
+    "main.3d8b61e0.js.map": "/firstfm/static/js/main.3d8b61e0.js.map"
   },
   "entrypoints": [
-    "static/css/main.76ed6fe9.css",
-    "static/js/main.87267842.js"
+    "static/css/main.7d9b4902.css",
+    "static/js/main.3d8b61e0.js"
   ]
 }

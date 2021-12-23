@@ -38,8 +38,10 @@ npm install
 
 ### Frameworks and Libraries
 - [React](https://reactjs.org/)
+- [React Router v6](https://reactrouter.com/)
 - [React Icons](https://react-icons.github.io/react-icons/)
 - [TailwindCSS](https://tailwindcss.com/)
+- [Axios](https://github.com/axios/axios)
 
 ### Public APIs used
 - [last.fm](https://www.last.fm/api)
@@ -55,3 +57,4 @@ npm install
 2. Add error handling
 3. Refactor to reduce code duplications
 4. Add better styling
+5. Add unit test

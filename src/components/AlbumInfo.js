@@ -10,7 +10,7 @@ function AlbumInfo(props) {
 
   const location = useLocation()
 
-  const imgSrc = location.state?.image || `https://picsum.photos/seed/${albumInfo.name}/200`
+  const imgSrc = isLoaded && albumInfo.image.find(img => img.size ==='medium')['#text']
   return (
 
     <div className='mt-4 ml-4'>

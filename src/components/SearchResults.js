@@ -58,9 +58,9 @@ function SearchResults(props) {
                                 albums.albummatches?.album.map(albumElem => {
 
                                     return (
-                                        <div onClick={() => navigate(`/artist/${albumElem.artist}/album/${albumElem.name}`, {state: {image: `https://picsum.photos/seed/${albumElem.name}/200`}})} key={albumElem.url} className='box-border p-2 w-48 h-64 bg-black text-white border-0 rounded-md cursor-pointer'>
+                                        <div onClick={() => navigate(`/artist/${albumElem.artist}/album/${albumElem.name}`)} key={albumElem.url} className='box-border p-2 w-48 h-64 bg-black text-white border-0 rounded-md cursor-pointer'>
                                             <div className='w-44 h-44 border-0 rounded-full overflow-hidden'>
-                                                <img src={`https://picsum.photos/seed/${albumElem.name}/200`} 
+                                                <img src={albumElem.image.find(img => img.size ==='medium')['#text']} 
                                                 className='h-full object-cover object-center' alt="" />
                                             </div>
                                             <div className='text-center mt-5'>

@@ -14,13 +14,13 @@ export function FirstFM(props) {
     <Router>
       <div className='text-gray-300 font-mono'>
         <div className='grid grid-cols-5 container mx-auto bg-slate-600 h-screen overflow-auto'>
-          <nav className='bg-slate-900  '>
+          <nav className='bg-slate-900 pt-10 p-4 '>
             <ul>
-              <li><Link to='/'>Home</Link></li>
-              <li><Link to='/search'>Search</Link></li>
-              <li><Link to='/top-artists'>Top Artists</Link></li>
-              <li><Link to='/top-tracks'>Top Tracks</Link></li>
-              <li><Link to='/likes'>Likes</Link></li>
+              <li className='p-4'><Link to='/'>Home</Link></li>
+              <li className='p-4'><Link to='/search'>Search</Link></li>
+              <li className='p-4'><Link to='/top-artists'>Top Artists</Link></li>
+              <li className='p-4'><Link to='/top-tracks'>Top Tracks</Link></li>
+              <li className='p-4'><Link to='/likes'>Likes</Link></li>
             </ul>
           </nav>
 

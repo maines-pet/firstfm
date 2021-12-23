@@ -6,6 +6,8 @@ Simple React frontend that consumes [last.fm](https://www.last.fm/api) apis
 
 Simple wiki-like website created using React. This project serves as a frontend to view last.fm API data.
 
+Live demo [here](https://maines-pet.github.io/firstfm)
+
 ### Features
 - Artists, Tracks, and Album Search
 - Show recommended Artists

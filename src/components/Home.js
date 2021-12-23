@@ -7,7 +7,7 @@ export function Home(props) {
     <div className='mt-4'>
       <p  className='text-center text-lg mb-6'>Welcome to first.fm</p>
 
-      <h1 className='text-center'>Top Artist of the Day</h1>
+      <h1 className='text-center'>Artist of the Day</h1>
       <div className='w-1/2 mx-auto grid grid-cols-2 border shadow-md shadow-purple-800 m-3 p-2'>
         <div>
           <div className='text-2xl'>Adele</div>
@@ -23,7 +23,7 @@ export function Home(props) {
           </div>
         </div>
       </div>
-      <h1 className='text-center'>Top Song of the Day</h1>
+      <h1 className='text-center'>Song of the Day</h1>
       <div className='w-1/2 mx-auto grid grid-cols-2 border shadow-md shadow-purple-800 m-3 p-2'>
         <div>
           <div className='text-2xl'>Happier Than Ever</div>
@@ -40,7 +40,7 @@ export function Home(props) {
           </div>
         </div>
       </div>
-      <h1 className='text-center'>Top Album of the Day</h1>
+      <h1 className='text-center'>Album of the Day</h1>
       <div className='w-1/2 mx-auto grid grid-cols-2 border shadow-md shadow-purple-800 m-3 p-2'>
         <div>
           <div className='text-2xl'>How Does Your Garden Grow?</div>

@@ -1,7 +1,6 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useParams, useLocation } from 'react-router-dom';
-import { useEffect } from 'react/cjs/react.development';
 import { useArtistSearch, useArtistTopAlbums, useArtistTopTracks } from '../hooks/api';
 
 function ArtistInfo(props) {

@@ -1,7 +1,6 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useOutletContext, useParams } from "react-router";
-import { useEffect } from "react/cjs/react.development";
 
 const BASE_URL = 'https://ws.audioscrobbler.com/2.0/'
 

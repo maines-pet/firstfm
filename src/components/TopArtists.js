@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 import { useChartTopArtists } from "../hooks/api";
 import { BsHeartFill, BsHeart } from 'react-icons/bs'
-import { useState } from "react";
-import { useEffect } from "react/cjs/react.development";
+import { useState, useEffect } from "react";
 
 const localKey = 'likedArtists';
 

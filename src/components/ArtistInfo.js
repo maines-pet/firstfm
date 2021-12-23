@@ -53,8 +53,8 @@ function ArtistInfo(props) {
                 <div className='mx-auto text-center text-xs'>show more</div>
               </>
               :
-              <p className='text-sm'>{artist.bio.content.split('\n').map((item) => {
-                return <span>{item}<br /></span>
+              <p className='text-sm'>{artist.bio.content.split('\n').map((item, index) => {
+                return <span key={index}>{item}<br /></span>
               })}</p>
             }
           </div>

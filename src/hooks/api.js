@@ -135,7 +135,6 @@ export function useArtistTopTracks() {
   const { name } = useParams()
 
   useEffect(() => {
-    console.log('in effect')
     setIsLoaded(false)
     axios.get(BASE_URL, {
       params: {

@@ -10,7 +10,7 @@ function AlbumInfo(props) {
 
   const location = useLocation()
 
-  const imgSrc = isLoaded && albumInfo.image.find(img => img.size ==='medium')['#text']
+  const imgSrc = isLoaded && albumInfo.image.find(img => img.size ==='large')['#text']
   return (
 
     <div className='mt-4 ml-4'>

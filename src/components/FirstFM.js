@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import { HashRouter as Router, Link, Route, Routes } from 'react-router-dom'
 import AlbumInfo from './AlbumInfo';
 import ArtistInfo from './ArtistInfo';
@@ -20,7 +19,7 @@ export function FirstFM(props) {
               <li><Link to='/'>Home</Link></li>
               <li><Link to='/search'>Search</Link></li>
               <li><Link to='/top-artists'>Top Artists</Link></li>
-              <li><Link to='/top-charts'>Top Tracks</Link></li>
+              <li><Link to='/top-tracks'>Top Tracks</Link></li>
               <li><Link to='/likes'>Likes</Link></li>
             </ul>
           </nav>
@@ -33,7 +32,7 @@ export function FirstFM(props) {
                 <Route path=':searchString' element={<SearchResults />} />
               </Route>
               <Route path='/top-artists' element={<TopArtists />} />
-              <Route path='/top-charts' element={<TopTracks />} />
+              <Route path='/top-tracks' element={<TopTracks />} />
               <Route path='/likes' element={<Likes />} />
               <Route path='/artist/:name' element={<ArtistInfo />} />
               <Route path='/artist/:name/album/:album' element={<AlbumInfo />} />

@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { Outlet, useLocation, useNavigate } from 'react-router';
-import { useEffect } from 'react/cjs/react.development';
+import { Outlet, useNavigate } from 'react-router';
 
 function SearchForm(props) {
 
   const [query, setQuery] = useState('')
-  const {pathname} = useLocation()
   const navigate = useNavigate()
   function handleChange(event) {
     setQuery(event.target.value)

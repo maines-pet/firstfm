@@ -32,7 +32,7 @@ export function TopTracks(props) {
 
   return (
     <div className='pl-8'>
-      <p className='text-4xl text-center pb-3'>Top Charts</p>
+      <p className='text-4xl text-center pb-3'>Top Tracks</p>
       <ul className='xl:grid xl:grid-cols-2 divide-gray-500'>
         {isLoaded &&
           tracks.track.map((row, index) => {

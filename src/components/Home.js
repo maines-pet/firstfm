@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-import countryList from 'iso-3166-country-list'
 import { BsHeadphones, BsPlayFill } from 'react-icons/bs'
 
 export function Home(props) {

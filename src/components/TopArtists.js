@@ -1,4 +1,3 @@
-import classNames from "classnames";
 import { Link } from "react-router-dom";
 import { useChartTopArtists } from "../hooks/api";
 import { BsHeartFill, BsHeart } from 'react-icons/bs'
